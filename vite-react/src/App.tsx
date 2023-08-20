@@ -6,7 +6,7 @@ const App: React.FC<React.HTMLAttributes<HTMLDivElement>> = () => {
     return (
         <div>
             Hello
-            <Button/>
+            <Button loading/>
         </div>
     );
 };

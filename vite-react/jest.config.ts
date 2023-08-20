@@ -5,7 +5,7 @@ export default {
     },
     moduleNameMapper  : {
         '\\.(gif|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
-        '\\.(css|scss)$'   : 'identity-obj-proxy',
+        '\\.(css|scss)$'   : 'jest-css-modules-transform',
     },
     setupFilesAfterEnv: [
         '<rootDir>/jest.setup.ts',

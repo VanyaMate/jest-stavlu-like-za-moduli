@@ -2,4 +2,8 @@
     padding: 10px;
     background: white;
     color: black;
+
+    &.loading {
+        opacity: .1;
+    }
 }
