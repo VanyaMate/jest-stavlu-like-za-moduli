@@ -9,11 +9,16 @@ export default defineConfig({
     plugins: [ react(), eslint() ],
     css    : {
         modules: {
-            generateScopedName: '[name]_[local]',
+            generateScopedName: '[name]_[local]-[hash:base64:5]',
         },
     },
     test   : {
         globals   : true,
         setupFiles: './jest.setup.ts',
+        css       : {
+            modules: {
+                classNameStrategy: 'non-scoped',
+            },
+        },
     },
 });
