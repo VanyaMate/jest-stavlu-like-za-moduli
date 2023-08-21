@@ -12,6 +12,11 @@ export default defineConfig({
             generateScopedName: '[name]_[local]-[hash:base64:5]',
         },
     },
+    resolve: {
+        alias: {
+            '@': '/src',
+        },
+    },
     test   : {
         globals   : true,
         setupFiles: './jest.setup.ts',

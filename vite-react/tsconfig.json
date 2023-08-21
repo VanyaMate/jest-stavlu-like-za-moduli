@@ -34,7 +34,12 @@
             "@testing-library/jest-dom",
             "vitest/globals",
             "vitest"
-        ]
+        ],
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        }
     },
     "include": [
         "src",

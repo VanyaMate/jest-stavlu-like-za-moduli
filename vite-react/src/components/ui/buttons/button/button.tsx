@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '@/helpers/react/className-merger.ts';
 import css from './button.module.scss';
 
 
@@ -10,8 +11,7 @@ const Button: React.FC<IButtonProps> = (props) => {
     const { loading, className, ...other } = props;
     return (
         <button { ...other }
-                className={ [ css.container, className, loading ? css.loading
-                                                                : '' ].join(' ') }>
+                className={ cn(css.container, loading ? css.loading : '', className) }>
             Button
         </button>
     );
