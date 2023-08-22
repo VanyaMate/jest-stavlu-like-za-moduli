@@ -1,4 +1,5 @@
-import Users from '@/containers/users/users.tsx';
+import Navbar from '@/components/navbar/navbar.tsx';
+import PathRoute from '@/containers/path-route/path-route.tsx';
 import { Input } from 'antd';
 import React, { useCallback, useState } from 'react';
 import Button from './components/ui/buttons/button/button.tsx';
@@ -19,10 +20,11 @@ const App: React.FC<React.HTMLAttributes<HTMLDivElement>> = () => {
 
     return (
         <div>
-            <h1>Status: { state.toString() }</h1>
+            <Navbar/>
+            <h2>Status: { state.toString() }</h2>
             <Button onClick={ toggle }/>
             <Input value={ value } onChange={ onInput }/>
-            <Users/>
+            <PathRoute/>
         </div>
     );
 };

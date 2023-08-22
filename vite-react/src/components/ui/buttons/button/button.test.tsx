@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import Button from './button.tsx';
 import { describe, it as test, expect } from 'vitest';
+import css from './button.module.scss';
 
 
 /**
@@ -19,6 +20,6 @@ describe('Button', () => {
         render(<Button loading/>);
         const button: HTMLElement = await screen.findByRole('button');
         expect(button).toBeInTheDocument();
-        expect(button).toHaveClass('loading');
+        expect(button).toHaveClass(css.loading);
     });
 });

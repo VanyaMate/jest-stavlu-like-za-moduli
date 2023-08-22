@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 export interface IUser {
@@ -37,7 +38,6 @@ const Users = () => {
 
     const loadUsers = useCallback(async () => {
         const response: AxiosResponse<IUser[]> = await axios.get('https://jsonplaceholder.typicode.com/users');
-        console.log(response.data);
         setUsers(response.data);
     }, []);
 
@@ -47,11 +47,13 @@ const Users = () => {
 
     return (
         <div>
+            Users
             {
                 users.map((user) => {
-                    return <h2
+                    return <Link
+                        to={ `/user/${ user.id }` }
                         className={ 'item' }
-                        key={ user.id }>[{ user.email }]: { user.username }</h2>;
+                        key={ user.id }>[{ user.email }]: { user.username }</Link>;
                 })
             }
         </div>

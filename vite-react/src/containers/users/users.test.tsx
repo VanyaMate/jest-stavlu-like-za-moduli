@@ -1,6 +1,8 @@
-import Users, { IUser } from '@/containers/users/users.tsx';
-import { render, screen } from '@testing-library/react';
+import App from '@/App.tsx';
+import { IUser } from '@/containers/users/users.tsx';
+import { render, waitFor } from '@testing-library/react';
 import axios from 'axios';
+import { MemoryRouter } from 'react-router-dom';
 import { describe, it as test, expect, vi } from 'vitest';
 
 
@@ -88,10 +90,15 @@ describe('Users', () => {
 
     test('All', async () => {
         vi.mocked(axios.get).mockReturnValue(response()); // <- тестил
-        render(<Users/>);
+        const { container }: { container: HTMLElement } = render(
+            <MemoryRouter initialEntries={ [ '/users' ] }>
+                <App/>
+            </MemoryRouter>,
+        );
         expect(vi.mocked(axios.get)).toBeCalledTimes(1);
-        const items: HTMLElement[] = await screen.findAllByRole('heading', { level: 2 });
-        expect(items.length).toBe(3);
-        screen.debug();
+        await waitFor(() => {
+            const items: NodeListOf<HTMLAnchorElement> = container.querySelectorAll('a.item[href^="/user/"]');
+            expect(items.length).toBe(3);
+        });
     });
 });
